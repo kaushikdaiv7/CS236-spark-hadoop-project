@@ -1,28 +1,59 @@
 # Data Processing and Visualization: Hadoop vs. Spark
 
 - [Project Intro](#project-intro)
-  - [Setup](#setup)
+  - [Task1](#task-1)
+  - [Task1](#task-2)
+- [Dataset Used](dataset-used)
+- [Setup](#setup)
     - [Docker Setup](#docker-setup)
     - [Project Setup](#project-setup)
-    - [Getting Data](#getting-data)
-  - [Running Code](#running-code)
-    - [Spark](#spark)
-    - [Hadoop](#hadoop)
+    - [Docker Info](#docker-info)
+    - [Setting up and running Spark environment](#setting-up-and-running-spark-environment)
+    - [Setting up Hadoop environment](#setting-up-hadoop-environment)
       - [Note for Mac users with Apple Silicon (M1 and M2)](#note-for-mac-users-with-apple-silicon-m1-and-m2)
-      - [Hadoop (Continued)](#hadoop-continued)
+      - [Running the Java files](#running-the-java-files)
     - [Important - Closing Docker containers](#important---closing-docker-containers)
-  - [Project Info](#project-info)
-    - [Getting Started](#getting-started)
+  - [Visualization and Comparision](#visualization-and-omparision)
     - [Task 1](#task-1)
     - [Task 2](#task-2)
 
 ## Project Intro
 
-For this project, you will be using [Spark](https://spark.apache.org/) and
+For this project, I have used [Spark](https://spark.apache.org/) and
 [Hadoop](https://hadoop.apache.org/), big data frameworks that allow developers
 to process massive amounts of data with parallelism and fault tolerance included
-by default. You will be utilizing [Docker](https://www.docker.com/) to run this
-on your local machine.
+by default. In addition, I have used [Docker](https://www.docker.com/) to containerize
+whole project which made installing dependencies and setting up the dev environment easier.
+
+The project consists of two tasks as below. Both tasks are implemented using SparkSQl, SparkRDD, 
+and Hadoop. The performance and ease of use for each method is compared.
+
+### Task 1
+
+For this task, I have calculated total population in each state in `2010` by summing the populations 
+from its counties (from `SupplementalDataCounty.csv`). This data had some issues, I did some
+cleaning to properly visualize it.
+
+### Task 2
+
+Task 2 involved comparing the average number of grocery stores available per 1000 people in each state, 
+in 2011 and 2016. I vizualized this before-and-after in a double-bar graph.
+([see method 1](https://www.geeksforgeeks.org/plot-multiple-columns-of-pandas-dataframe-on-bar-chart-with-matplotlib/))
+`for the 3 states with the largest positive change between the years`.
+
+Both tasks are done in SparkSQl, SparkRDD, and Hadoop and the performance and ease of use is compared against each other.
+
+## Dataset used
+
+In this project, I have used data from the USDA's Food Environment Atlas.
+
+The data can be found in `data/` folder of this github.
+
+[Data Source](https://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads/)
+
+Scroll down to `Data Set -> Food and Environment Atlas .csv Files` to download
+the data. Create a new directory `data/` in the home directory of the repo, then
+extract all of the files into it.
 
 ## Setup
 
@@ -31,6 +62,7 @@ In this project, the only setup required is:
 - Docker
 - a terminal to run shell commands
 - a web browser to access localhost
+- A code editor to write Java code
 
 ### Docker Setup
 
@@ -42,26 +74,10 @@ ask you to restart. Do this and make sure Docker is opened before continuing.
 
 ### Project Setup
 
-Clone this repository and cd into it. Create the directories `hadoop/data/` and
-`spark/data`, which will be where you put your data files. You will also see
-`spark/src/` and `hadoop/CS236_project`, where your notebooks will be.
+Clone this repository and cd into it. `spark/src/` and `hadoop/CS236_project` have the source code files
+for the Spark and Hadoop respectively.
 
-### Getting Data
-
-In this project you will be using data from the USDA's Food Environment Atlas.
-
-[Data Source](https://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads/)
-
-Scroll down to `Data Set -> Food and Environment Atlas .csv Files` to download
-the data. Create a new directory `data/` in the home directory of the repo, then
-extract all of the files into it.
-
-## Running Code
-
-We will be using Docker for this project to run our code in a container. This
-allows your code to run in an isolated environment, without having to worry
-about your personal computer machine's environment. Read more about how docker
-works [here](https://www.docker.com/).
+### Docker Info
 
 The configuration of our docker container is defined in `docker-compose.yml`.
 This configuration is the bare minimum to work on the project, but these
@@ -91,11 +107,14 @@ ports:
   - 8888:8888
 ```
 
-### Spark
+### Setting up and running Spark environment
 
-To run the Spark environment in Jupyter Notebook, run `docker compose build`,
-then `docker compose up` in your terminal, in the same directory as
-`docker-compose.yml`. For future runs, you only need to run `docker compose up`.
+To run the Spark environment in Jupyter Notebook, 
+cd into `spark/` folder of the cloned folder
+run `docker compose build`
+run `docker compose up`
+
+For future runs, you only need to run `docker compose up`.
 Running the build for the first time may take 5-10 minutes.
 
 Look for this text in the terminal output:
@@ -108,18 +127,20 @@ file:///home/jovyan/.local/share/jupyter/runtime/jpserver-7-open.html
          http://127.0.0.1:8888/lab?token=<a_generated_token>
 ```
 
-Open the second url (the one that starts with `127.0.0.1`) to open Jupyter Lab.
-This is where you will be doing your work.
-
 You will be using Jupyter Notebook to run your Python/PySpark code. See the
 [Jupyter docs](https://docs.jupyter.org/en/latest/) for more info.
 
-### Hadoop
+Open the second url (the one that starts with `127.0.0.1`) to open Jupyter Lab.
+This is where you will find the jupyter notebooks for Task1 and Task2 named Task1Final and Task2Final.
+
+
+### Setting up Hadoop environment
 
 Running Hadoop code is a little more complicated. First, download the
 [Hadoop binaries](https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz)
-and put the file in the `hadoop/` directory. Do not decompress the file. Then,
-run `docker compose build`. This will take about 10 minutes.
+and put the file in the `hadoop/` directory. Do not decompress the file.
+
+Then, run `docker compose build`. This will take about 10 minutes.
 
 To start the Docker container, run the command `docker compose up -d`. Note that
 we add `-d`. This is because we want to run the container in detached mode so we
@@ -139,80 +160,45 @@ unset JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64
 ```
 
-#### Hadoop (Continued)
+This is all about setting up and running Docker container. 
+
+Now, you can access the code files for Task1 in below folder of cloned project:
+`<cloned-folder>/hadoop/CS236_project/src/main/java/edu/ucr/cs/cs236/App.java`
+
+Open the file in your code editor and write the code for Java, save it. The saved changes get reflected in Docker
+container automatically.
+
+Same for Task2, path for code file is given below:
+`<cloned-folder>/hadoop/CS236_project/src/main/java/edu/Task2.java`
+
+### Running the Java files
+
+If you want to run the Task1 file App.java, make below changes to pom.xml:
+
+Open pom.xml located at `<cloned-folder>/hadoop/CS236_project/pom.xml`
+Change `<mainClass>` tag to `<mainClass>edu.ucr.cs.cs236.App</mainClass>`
+
+If you want to run the Task2 file Task2.java, then change `<mainClass>` tag to `<mainClass>edu.ucr.cs.cs236.Task2</mainClass>`
 
 Whenever your code is ready to recompile, run the command `mvn package`. This
 will compile your Java code into a jar.
 
-To run the jar in Hadoop, run the following command:
+To run the Task1 jar in Hadoop, run the following command:
 
 ```bash
 hadoop jar target/CS236_project-1.0-SNAPSHOT.jar <path_to_input_file> <path_to_output_directory>
 ```
 
+```bash
+hadoop jar target/CS236_project-1.0-SNAPSHOT.jar <path_to_input_file> <path_to_output_directory1> <path_to_output_directory2> <path_to_output_directory3> 
+```
+
 Note that the output directory must not exist before running Hadoop.
 
-To see how long the Hadoop code took to run, refer to
-`hadoop/execution_time.txt`.
-
-Look through `hadoop/CS236_project/src/main/java/edu/ucr/cs/cs236/App.java` to
-understand the structure of the code, and complete the TODO sections to write
-your results. Your results should be in
-`CS236_project/<your_output_directory_name>/part-r-00000`. To do the
-visualization, put the output file in the `data` directory of your Spark
-environment and use Python & Pandas to visualize it the same way you did for
-Spark.
+Your results should be in `CS236_project/<your_output_directory_name>/part-r-00000` for Task1 and `CS236_project/<your_output_directory_name3>/part-r-00000`. 
 
 ### Important - Closing Docker containers
 
-When you are finishing running your code, CTRL+C docker compose for Spark. For
-both Docker containers, make sure to run the command `docker compose down`. You
+When you are finishing running your code, CTRL+C docker compose for Spark and type exit for Hadoop. 
+For both Docker containers, make sure to run the command `docker compose down`. You
 will not lose any saved files.
-
-## Project Info
-
-In this project you will be looking at food environment data, such as proximity
-to a grocery store, restaurant, etc. over different areas in the United States.
-Read the
-[documentation](https://www.ers.usda.gov/data-products/food-environment-atlas/documentation/)
-to help understand the data before continuing. You will be performing these
-tasks in both Hadoop, then Spark.
-
-It is recommended but not required to do the task in Spark first since the
-syntax is simpler.
-
-### Getting Started
-
-Open `src/tutorial.ipynb` in Jupyter Lab and experiment with the PySpark tools,
-as well as the data. You will learn some basics of how to process data, and
-visualize it. Compare the performance of Spark SQL and RDDs, as well as Hadoop.
-
-### Task 1
-
-When working with real-world data, you will encounter dirty data. This could be
-either due to the nature of the data, or simple human error. For this task, get
-the total population in each state in `2010` by summing the populations from its
-counties (from `SupplementalDataCounty.csv`). State population data already
-exists, but use the county data as an exercise. This data has some issues, so
-you will have to do some cleaning to properly visualize it.
-
-As stated above, the template code for Hadoop has some TODOs to complete. These
-TODOs have to do with this task.
-
-In your report, write what issues you came across, and how you solved them.
-Include a screenshot of the resulting choropleth map that you created from this
-data. Also include the runtimes of the computation for Spark using both SQL and
-RDDs, and Hadoop. (use `%%timeit` and all in 1 cell for Spark). This includes
-file reading, the computation, and file writing.
-
-### Task 2
-
-After reading through the `variable list` file, compare the average number of
-grocery stores available per 1000 people in each state, in 2011 and 2016.
-Vizualize this before-and-after in a double bar graph
-([see method 1](https://www.geeksforgeeks.org/plot-multiple-columns-of-pandas-dataframe-on-bar-chart-with-matplotlib/))
-`for the 3 states with the largest positive change between the years`.
-
-In your report, include a screenshot of the bar graph. Record runtimes in the
-same way as task 1.
-
