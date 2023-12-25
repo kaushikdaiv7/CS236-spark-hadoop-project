@@ -1,10 +1,6 @@
-# UCR-CS236-Project
+# Data Processing and Visualization: Hadoop vs. Spark
 
-- [UCR-CS236-Project](#ucr-cs236-project)
-  - [Logistics](#logistics)
-    - [Due Date](#due-date)
-    - [Team and Setup](#team-and-setup)
-    - [Deliverables](#deliverables)
+- [Project Intro](#project-intro)
   - [Setup](#setup)
     - [Docker Setup](#docker-setup)
     - [Project Setup](#project-setup)
@@ -19,41 +15,14 @@
     - [Getting Started](#getting-started)
     - [Task 1](#task-1)
     - [Task 2](#task-2)
-  - [Rubric](#rubric)
-  - [Acknowledgements](#acknowledgements)
+
+## Project Intro
 
 For this project, you will be using [Spark](https://spark.apache.org/) and
 [Hadoop](https://hadoop.apache.org/), big data frameworks that allow developers
 to process massive amounts of data with parallelism and fault tolerance included
 by default. You will be utilizing [Docker](https://www.docker.com/) to run this
 on your local machine.
-
-## Logistics
-
-### Due Date
-
-This project will be due on 13 December 2023 at 11:59PM. 15-minute demos are
-required. See Deliverables below for scheduling details.
-
-### Team and Setup
-
-This project will be completed in pairs. Provide the TA with both students'
-names and SIDs by Friday, 27 October 2023.
-
-### Deliverables
-
-To see point distributions, see the [rubric](#rubric)
-
-1. A zipped file containing:
-   1. The `App.java` files that include your Hadoop code for both tasks. Name
-      them `task_1.java` and `task_2.java` respectively.
-   2. The Jupyter notebooks that include your PySpark code for both tasks. Name
-      them `task_1.ipynb` and `task_2.ipynb` respectively.
-2. A brief and concise report PDF following this
-   [template](https://docs.google.com/document/d/1Gz_E2v0NX8AwgynNcu9yMvuS6gGkUVkG1jS_hVPM8x4/edit?usp=sharing)
-
-3. A 15-minute demo for the project with the TA scheduled on Google sheets,
-   which will be shared on Canvas. Demos will be held on 14 and 15 December.
 
 ## Setup
 
@@ -247,28 +216,3 @@ Vizualize this before-and-after in a double bar graph
 In your report, include a screenshot of the bar graph. Record runtimes in the
 same way as task 1.
 
-## Rubric
-
-| Item                                     | Deliverable       | Description                                                      | Points  |
-| :--------------------------------------- | :---------------- | :--------------------------------------------------------------- | ------- |
-| Code Submission                          | canvas submission | Zip file contents are correctly named and include required files | 5       |
-| Template                                 | report            | Report follows template                                          | 3       |
-| Team Member Names                        | report            | Includes complete information for each team member               | 2       |
-| Contributions                            | report            | Describe each team member's contributions                        | 5       |
-| Task 1 Content                           | report            | Includes screenshot, what data cleaning was done, and runtimes   | 10      |
-| Task 2 Content                           | report            | Includes screenshot and runtimes                                 | 10      |
-| Method Comparison - Runtime              | report            | Compare relative runtimes for each task for each method and why  | 10      |
-| Method Comparison - Developer Experience | report            | Compare which method was most comfortable to code and why        | 10      |
-| Preparedness                             | demo              | Code should be ready to run during the demo                      | 3       |
-| Task 1 Code                              | demo              | Brief code walkthrough detailing how you implemented each method | 7       |
-| Task 1 Output                            | demo              | Show job run and correct outputs with all 3 methods              | 7       |
-| Task 1 Visualization                     | demo              | Visualization is interpretable                                   | 7       |
-| Task 2 Code                              | demo              | Brief code walkthrough detailing how you implemented each method | 7       |
-| Task 2 Output                            | demo              | Show job run and correct outputs with all 3 methods              | 7       |
-| Task 2 Visualization                     | demo              | Visualization is interpretable                                   | 7       |
-| **Total**                                |                   |                                                                  | **100** |
-
-## Acknowledgements
-
-Parts of the setup, template code, and running instructions were adapted with
-permission from Professor Eldawy's big-data lab materials.
