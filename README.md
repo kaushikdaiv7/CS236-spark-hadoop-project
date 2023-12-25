@@ -109,9 +109,12 @@ ports:
 
 ### Setting up and running Spark environment
 
-To run the Spark environment in Jupyter Notebook, 
+To run the Spark environment in Jupyter Notebook,
+
 cd into `spark/` folder of the cloned folder
+
 run `docker compose build`
+
 run `docker compose up`
 
 For future runs, you only need to run `docker compose up`.
@@ -162,18 +165,23 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64
 
 This is all about setting up and running Docker container. 
 
-Now, you can access the code files for Task1 in below folder of cloned project: `<cloned-folder>/hadoop/CS236_project/src/main/java/edu/ucr/cs/cs236/App.java`
+Now, you can access the code files for Task1 in below folder of cloned project: 
+
+`<cloned-folder>/hadoop/CS236_project/src/main/java/edu/ucr/cs/cs236/App.java`
 
 Open the file in your code editor and write the code for Java, save it. The saved changes get reflected in Docker
 container automatically.
 
-Same for Task2, path for code file is given below: `<cloned-folder>/hadoop/CS236_project/src/main/java/edu/Task2.java`
+Same for Task2, path for code file is given below: 
+
+`<cloned-folder>/hadoop/CS236_project/src/main/java/edu/Task2.java`
 
 ### Running the Java files
 
 If you want to run the Task1 file App.java, make below changes to pom.xml:
 
 Open pom.xml located at `<cloned-folder>/hadoop/CS236_project/pom.xml`
+
 Change `<mainClass>` tag to `<mainClass>edu.ucr.cs.cs236.App</mainClass>`
 
 If you want to run the Task2 file Task2.java, then change `<mainClass>` tag to `<mainClass>edu.ucr.cs.cs236.Task2</mainClass>`
