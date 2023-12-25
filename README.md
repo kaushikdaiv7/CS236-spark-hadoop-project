@@ -162,14 +162,12 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64
 
 This is all about setting up and running Docker container. 
 
-Now, you can access the code files for Task1 in below folder of cloned project:
-`<cloned-folder>/hadoop/CS236_project/src/main/java/edu/ucr/cs/cs236/App.java`
+Now, you can access the code files for Task1 in below folder of cloned project: `<cloned-folder>/hadoop/CS236_project/src/main/java/edu/ucr/cs/cs236/App.java`
 
 Open the file in your code editor and write the code for Java, save it. The saved changes get reflected in Docker
 container automatically.
 
-Same for Task2, path for code file is given below:
-`<cloned-folder>/hadoop/CS236_project/src/main/java/edu/Task2.java`
+Same for Task2, path for code file is given below: `<cloned-folder>/hadoop/CS236_project/src/main/java/edu/Task2.java`
 
 ### Running the Java files
 
