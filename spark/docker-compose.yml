@@ -7,4 +7,3 @@ services:
       - ./data:/home/jovyan/data
     ports:
       - 8888:8888
-

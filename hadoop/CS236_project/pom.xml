@@ -19,7 +19,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.ucr.cs.cs236.App</mainClass>
+              <mainClass>edu.ucr.cs.cs236.Task2</mainClass>
             </manifest>
           </archive>
         </configuration>
