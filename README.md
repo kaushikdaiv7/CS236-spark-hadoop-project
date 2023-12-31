@@ -13,9 +13,17 @@
       - [Note for Mac users with Apple Silicon (M1 and M2)](#note-for-mac-users-with-apple-silicon-m1-and-m2)
       - [Running the Java files](#running-the-java-files)
     - [Important - Closing Docker containers](#important---closing-docker-containers)
-  - [Visualization and Comparision](#visualization-and-omparision)
-    - [Task 1](#task-1)
-    - [Task 2](#task-2)
+- [Visualizations](#visualizations)
+  - [Task 1 - State wise population map](#task-1)
+  - [Task 2 - Top 3 States with max difference of grocery stores/1000 people between 2011-2016](#task-2)
+- [Runtimes for SparkSQL, SparkRDD and Hadoop](#runtimes-for-SparkSQL,-SparkRDD-and-Hadoop)
+  - [Task 1](#task-1)
+  - [Task 2](#task-2)
+- [SparkSQL vs SparkRDD vs Hadoop](#SparkSQL-vs-SparkRDD-vs-Hadoop)
+  - [Runtime comparision](#Runtime-comparision)
+  - [Ease of code comparision](#Ease-of-code-comparision)
+    
+    
 
 ## Project Intro
 
@@ -208,3 +216,52 @@ Your results should be in `CS236_project/<your_output_directory_name>/part-r-000
 When you are finishing running your code, CTRL+C docker compose for Spark and type exit for Hadoop. 
 For both Docker containers, make sure to run the command `docker compose down`. You
 will not lose any saved files.
+
+## Visualizations
+
+### Task 1 - State wise population map
+
+![State wise population map](assets/Task1.jpeg)
+
+### Task 2 - Top 3 States with max difference of grocery stores/1000 people between 2011-2016
+
+![Top 3 States with max diff of Stores/1000 people between 2011-2016](assets/Task2.jpeg)
+
+## Runtimes for SparkSQL, SparkRDD and Hadoop
+
+### Task 1
+
+![ET1](assets/ExecutionTime1.png)
+
+### Task 2
+
+![ET2](assets/ExecutionTime2.png)
+
+## SparkSQL vs SparkRDD vs Hadoop
+
+## Runtime comparision
+
+For Task1, SparkSQL and SparkRDD based approaches work the best. SparkSQL (96.7 ms) is marginally better than SparkRDD (110 ms). Query optimizer of the SparkSQL does a good job in optimizing the filter, sum and group-by operations. On the other hand, Hadoop MapReduce (1.5 sec) performs the worst. The reason may be because MapReduce reads from and writes to the disk after each map and reduce operations, which can be significantly slower due to I/O latency. Spark, on the other hand, performs in-memory processing, which is faster as it reduces the need for disk I/O.
+
+For Task2, SparkSQL (127 ms) again performs the best. Reason being the same, the query optimizer of the SparkSQL does a good job in optimizing the filter, sum, group-by and join operations. However, in this task, the performance of SparkSQL (127 ms) and SparkRDD (4.8 sec) differ by a huge margin. I think the reason for this is SparkSQL’s query optimizer is very good and also, SparkRDD is a black box approach and has no idea about the schema, which means developers have to optimize the transformations. MapReduce (4.25 sec) performs slightly better than SparkRDD but is still inefficient compared to SparkSQL. Again, because MapReduce reads from and writes to the disk after each map and reduce operations, which can be significantly slower due to I/O latency.
+
+## Ease of code comparision
+
+In terms of coding comfort, the three methods exhibit distinct advantages and disadvantages:
+
+Hadoop MapReduce is the most difficult to code:
+Verbose: Requires extensive boilerplate code, making it tedious and less readable.
+Library-heavy: Involves numerous libraries, increasing complexity and debugging overhead.
+Limited debugging tools: Debugging MapReduce jobs can be challenging due to the distributed nature of the process.
+
+Spark RDD is easier than Hadoop:
+Simple API: Offers a relatively straightforward API for basic operations like map and reduce.
+Flexibility: Allows fine-grained control over data processing, enabling complex manipulations.
+Debugging challenges: Similar to Hadoop, debugging map and reduce operations can be cumbersome.
+
+Spark SQL is the easiest to code:
+Intuitive: Utilizes familiar SQL syntax, making it easy for users with SQL knowledge.
+Concise: Requires significantly fewer lines of code compared to Hadoop and RDDs.
+Advanced optimization: Leverages Spark's optimization engine for efficient query execution.
+
+Overall, Spark SQL emerges as the clear winner in terms of coding comfort. Its concise syntax, familiarity with SQL, and optimized execution make it a significantly more enjoyable and efficient coding experience.
