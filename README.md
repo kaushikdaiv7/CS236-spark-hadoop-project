@@ -1,8 +1,8 @@
 # Data Processing and Visualization: Hadoop vs. Spark
 
 - [Project Intro](#project-intro)
-  - [Task1](#task-1)
-  - [Task1](#task-2)
+  - [Task 1](#task-1)
+  - [Task 2](#task-2)
 - [Dataset Used](dataset-used)
 - [Setup](#setup)
     - [Docker Setup](#docker-setup)
@@ -16,9 +16,9 @@
 - [Visualizations](#visualizations)
   - [Task 1 - State wise population map](#Task-1---State-wise-population-map)
   - [Task 2 - Top 3 States with max difference of grocery stores/1000 people between 2011-2016](#Task-2---Top-3-States-with-max-difference-of-grocery-stores/1000-people-between-2011-2016)
-- [Runtimes for SparkSQL, SparkRDD and Hadoop](#runtimes-for-SparkSQL,-SparkRDD-and-Hadoop)
-  - [Task 1](#task-1)
-  - [Task 2](#task-2)
+- [Runtimes for Spark and Hadoop](#runtimes-for-Spark-and-Hadoop)
+  - [Task 1 Runtime](#task-1-runtime)
+  - [Task 2 Runtime](#task-2-runtime)
 - [SparkSQL vs SparkRDD vs Hadoop](#SparkSQL-vs-SparkRDD-vs-Hadoop)
   - [Runtime comparision](#Runtime-comparision)
   - [Ease of code comparision](#Ease-of-code-comparision)
@@ -227,13 +227,13 @@ will not lose any saved files.
 
 ![Top 3 States with max diff of Stores/1000 people between 2011-2016](assets/Task2.jpeg)
 
-## Runtimes for SparkSQL, SparkRDD and Hadoop
+## Runtimes for Spark and Hadoop
 
-### Task 1
+### Task 1 Runtime
 
 ![ET1](assets/ExecutionTime1.png)
 
-### Task 2
+### Task 2 Runtime
 
 ![ET2](assets/ExecutionTime2.png)
 
